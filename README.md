@@ -1,0 +1,9 @@
+#Progress
+
+**Introduction to Computer Science**
+
+Course|Files|Status
+:--|:--:|:--:
+[Introduction to Computer Science](https://www.edx.org/course/introduction-computer-science-harvardx-cs50x#!)| [Link](https://github.com/NicolaFerracin/oss/tree/master/Introduction%20to%20Computer%20Science)|Completed
+[Introduction to Computer Science and Programming Using Python](https://www.edx.org/course/introduction-computer-science-mitx-6-00-1x-5#!)| [Link](https://github.com/NicolaFerracin/oss/tree/master/Introduction%20to%20Computer%20Science%20and%20Programming%20Using%20Python)| Completed|
+[Introduction to Computational Thinking and Data Science](https://www.edx.org/course/introduction-computational-thinking-data-mitx-6-00-2x-3#!)| No link| In progress
