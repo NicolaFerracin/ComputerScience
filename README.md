@@ -13,7 +13,13 @@ Course|Files|Status
 
 Course|Files|Status
 :--|:--:|:--:
-[Systematic Program Design- Part 1: The Core Method](https://www.edx.org/course/systematic-program-design-part-1-core-ubcx-spd1x-0)| No link| In progress
+[Systematic Program Design- Part 1: The Core Method](https://www.edx.org/course/systematic-program-design-part-1-core-ubcx-spd1x-0)| No link| Started
+
+###Math (Discrete Math)
+
+Course|Files|Status
+:--|:--:|:--:
+[Mathematics for Computer Science](http://ocw.mit.edu/courses/electrical-engineering-and-computer-science/6-042j-mathematics-for-computer-science-fall-2010/index.htm)| No link| Started
 
 ###Internet of Things
 
