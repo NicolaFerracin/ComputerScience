@@ -13,7 +13,7 @@ Course|Files|Status|Certification
 
 Course|Files|Status|Certification
 :--|:--:|:--:|:--:
-[Systematic Program Design- Part 1: The Core Method](https://www.edx.org/course/systematic-program-design-part-1-core-ubcx-spd1x-0)|[Link](https://github.com/NicolaFerracin/oss/tree/master/Program%20Design/Systematic%20Program%20Design-%20Part%201%20The%20Core%20Method)|[Certificate](https://courses.edx.org/certificates/95c74924e5d04386aa8db75df240f355)
+[Systematic Program Design- Part 1: The Core Method](https://www.edx.org/course/systematic-program-design-part-1-core-ubcx-spd1x-0)|[Link](https://github.com/NicolaFerracin/oss/tree/master/Program%20Design/Systematic%20Program%20Design-%20Part%201%20The%20Core%20Method)|Completed|[Certificate](https://courses.edx.org/certificates/95c74924e5d04386aa8db75df240f355)
 
 ###Math (Discrete Math)
 
