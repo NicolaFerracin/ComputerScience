@@ -1,4 +1,6 @@
-Generic repository containing all the projects completed following the courses suggested by the OpenSourceSociety University.
+#Open Source Society University - Curriculum
+
+Repository containing all the projects completed following the courses suggested by the OpenSourceSociety University.
 
 [OSS repo](https://github.com/open-source-society/computer-science)
 
