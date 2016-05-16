@@ -1,0 +1,324 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Nand2Tetris - Project 6 Assembler</title>
+</head>
+<body style="text-align: center; margin-top: 200px;">
+  <input type="file" id="file-input" />
+  <button onclick="assemble()">Convert to binary</button>
+  <div id="display" style="display:none; margin-top:20px">
+    Your binary file is ready to be donwloaded. Thanks!
+  <a id="save" download=""><button onclick="saveBinary()">Save binary code</button></a>
+  </div>
+</body>
+
+<script>
+'use strict'
+
+var arr; // holds the content of the .asm file split by line in an array
+var data = []; // holds the binary code
+// initialize symbols table with 23 predefined symbols
+var symbols = {"R0" : 0,
+"R1" : 1,
+"R2" : 2,
+"R3" : 3,
+"R4" : 4,
+"R5" : 5,
+"R6" : 6,
+"R7" : 7,
+"R8" : 8,
+"R9" : 9,
+"R10" : 10,
+"R11" : 11,
+"R12" : 12,
+"R13" : 13,
+"R14" : 14,
+"R15" : 15,
+"SP" : 0,
+"LCL" : 1,
+"ARG" : 2,
+"THIS" : 3,
+"THAT" : 4,
+"SCREEN" : 16384,
+"KBD" : 24576}
+
+var nextSlotINRam = 16;
+
+// when user loads a file, go to readSingleFile()
+document.getElementById('file-input')
+.addEventListener('change', readSingleFile, false);
+function readSingleFile(e) {
+  var file = e.target.files[0];
+  if (!file) {
+    return;
+  }
+  var reader = new FileReader();
+  reader.onload = function(e) {
+    var contents = e.target.result; // extract the content
+    arr = contents.split("\n"); // enter each line in a new entry in an array
+  };
+  reader.readAsText(file);
+  document.getElementById('save').download = file.name.replace("asm", "hack"); // set the result file name to download
+}
+
+// on Convert to binary button click
+// where all the work is done
+function assemble() {
+  // first document pass
+  firstPass();
+  // second document pass
+  secondPass();
+  // give successfull message
+  alertUser()
+}
+
+// the first pass, to remove comments, spaces and check the instructions
+function firstPass() {
+  // for each line in the asm file
+  for (var i = 0; i < arr.length; i++) {
+    var current = arr[i];
+    // if comment in line, remove it
+    if (current.indexOf("//") > -1) {
+      current = current.replace(current.substring(current.indexOf("//")), ""); // remove comments
+    }
+    // if white space in line, remove it
+    current = current.replace(/ /g, "") // remove white spaces
+    current = current.replace(/\r/g, "") // remove new lines
+    // if line is now empty, remove it from the original array
+    arr[i] = current;
+    if (current == "") {
+      arr.splice(i, 1);
+      i--;
+    }
+    // find () instructions and add to symbols table
+    if (current.indexOf("(") > -1) {
+      symbols[current.substring(1, current.length - 1)] = i;
+      arr.splice(i, 1);
+      i--;
+    }
+  }
+}
+
+// replace all the A and C instructions with the respective binary code
+function secondPass() {
+  // for each line in the asm file
+  for (var i = 0; i < arr.length; i++) {
+    var current = arr[i];
+    current = current.trim();
+    // if it starts with @ it's an A instruction
+    if (current.indexOf("@") > -1) {
+      var valueToBin
+      // if the value is an int, then just parse it to binary
+      if (parseInt(current.substring(1)) === parseInt(current.substring(1), 10)) {
+        valueToBin = (current.substring(1) >>> 0).toString(2);
+      } else {
+        // if the symbol is not in the table, add it
+        if (symbols[current.substring(1)] == null) {
+          // if the value has not been found before, add to symbols table
+          symbols[current.substring(1)] = nextSlotINRam;
+          nextSlotINRam++;
+        }
+        valueToBin = symbols[current.substring(1)];
+        valueToBin = (valueToBin >>> 0).toString(2);
+      }
+      // format the binary so it has 16 bits
+      for (var x = valueToBin.length; x < 16; x++) {
+
+        valueToBin = "0" + valueToBin;
+      }
+      // push binary code line to data
+      data.push(valueToBin);
+    }
+    // if not an A instruction, then it's a C instruction
+    else {
+      var binStart = "111";
+      var binComp = "";
+      var binDest = "000";
+      var binJump = "000";
+      var dest = ""
+      var compStart = -1;
+      var jump = "";
+      var comp = "";
+      // check if destination
+      if (current.indexOf("=") > -1) {
+        var dest = current.substring(0, current.indexOf("="));
+        compStart = dest.length;
+      }
+      // check if jump
+      if (current.indexOf(";") > -1) {
+        jump = current.substring(current.indexOf(";") + 1);
+        comp = current.substring(compStart + 1, current.indexOf(";"));
+      } else {
+        comp = current.substring(compStart + 1).trim();
+      }
+      // set binComp
+      switch(comp) {
+        case("0"):
+        binComp = "0101010";
+        break;
+        case("1"):
+        binComp = "0111111";
+        break;
+        case("-1"):
+        binComp = "0111010";
+        break;
+        case("D"):
+        binComp = "0001100";
+        break;
+        case("A"):
+        binComp = "0110000";
+        break;
+        case("!D"):
+        binComp = "0001101";
+        break;
+        case("!A"):
+        binComp = "0110001";
+        break;
+        case("-D"):
+        binComp = "0001111";
+        break;
+        case("-A"):
+        binComp = "0110011";
+        break;
+        case("D+1"):
+        binComp = "0011111";
+        break;
+        case("A+1"):
+        binComp = "0110111";
+        break;
+        case("D-1"):
+        binComp = "0001110";
+        break;
+        case("A-1"):
+        binComp = "0110010";
+        break;
+        case("D+A"):
+        binComp = "0000010";
+        break;
+        case("D-A"):
+        binComp = "0010011";
+        break;
+        case("A-D"):
+        binComp = "0000111";
+        break;
+        case("D&A"):
+        binComp = "0000000";
+        break;
+        case("D|A"):
+        binComp = "0010101";
+        break;
+        case("M"):
+        binComp = "1110000";
+        break;
+        case("!M"):
+        binComp = "1110001";
+        break;
+        case("-M"):
+        binComp = "1110011";
+        break;
+        case("M+1"):
+        binComp = "1110111";
+        break;
+        case("M-1"):
+        binComp = "1110010";
+        break;
+        case("D+M"):
+        binComp = "1000010";
+        break;
+        case("D-M"):
+        binComp = "1010011";
+        break;
+        case("M-D"):
+        binComp = "1000111";
+        break;
+        case("D&M"):
+        binComp = "1000000";
+        break;
+        case("D|M"):
+        binComp = "1010101";
+        break;
+      }
+
+      // set binDest
+      if (dest != "") {
+        switch(dest) {
+          case("M"):
+          binDest = "001";
+          break;
+          case("D"):
+          binDest = "010";
+          break;
+          case("MD"):
+          binDest = "011";
+          break;
+          case("A"):
+          binDest = "100";
+          break;
+          case("AM"):
+          binDest = "101";
+          break;
+          case("AD"):
+          binDest = "110";
+          break;
+          case("AMD"):
+          binDest = "111";
+          break;
+        }
+      }
+      // set binJump
+      if (jump != "") {
+        switch (jump) {
+          case("JGT"):
+          binJump = "001";
+          break;
+          case("JEQ"):
+          binJump = "010";
+          break;
+          case("JGE"):
+          binJump = "011";
+          break;
+          case("JLT"):
+          binJump = "100";
+          break;
+          case("JNE"):
+          binJump = "101";
+          break;
+          case("JLE"):
+          binJump = "110";
+          break;
+          case("JMP"):
+          binJump = "111";
+          break;
+        }
+      }
+
+      // push binary code line to data
+      data.push(binStart + binComp + binDest + binJump)
+    }
+  }
+}
+
+function alertUser() {
+  document.getElementById("display").style.display = 'block';
+}
+
+// on Save binary code button click
+function saveBinary() {
+  var string = data.join("\r\n");
+  // create file
+  var file;
+  var properties = {type: 'text/plain'}; // Specify the file's mime-type.
+  try {
+    // Specify the filename using the File constructor, but ...
+    file = new File(string, "file.hack", properties);
+
+  } catch (e) {
+    // ... fall back to the Blob constructor if that isn't supported.
+    file = new Blob([string], properties);
+  }
+  // activate the download
+  var url = URL.createObjectURL(file);
+  document.getElementById('save').href = url;
+}
+</script>
+</html>
