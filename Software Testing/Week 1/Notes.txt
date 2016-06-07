@@ -1,0 +1,127 @@
+SOFTWARE TESTING
+Week 1
+
+-------------------------------
+
+Fixed-size queue:
+- enqueue
+- dequeue
+- FIFO (first in first out)
+
+-------------------------------
+
+A single test case represents a point in the input space for the system that we are testing.
+Running the code we map the point in the input space to a point in the output space
+Problem: input spaces are LARGE, and we can't test them all
+Create a CLASS OF INPUT that will map to a CLASS OF INPUTS in the output space.
+
+-------------------------------
+
+Creating software that's easily testable
+- write clean code
+- refactor
+- should always be able to describe what the module does and how it interacts with other code
+- no extra threads
+- no global variables
+- no pointers/references soup (for C/C++/Java)
+- modules should have unit tests
+- when possible (when one module interfaces another module that might fail), support fault injection 
+- should include large number of assertions
+
+-------------------------------
+
+ASSERTIONS
+Executable check for a property that must be true
+
+i.e.
+def sqrt(arg):
+	compute result
+	assert result >= 0 (we know every sqrt MUST be => 0 by definition)
+	return result
+	
+Rule1: assertions are not for error handling
+Rule2: no side effects
+Rule3: no silly assertions (i.e. assert(1+1) == 2)
+Overall, a good assertion is something that tests a non-trivial property that could be wrong, but only if we made a mistake in our logic (not something that could be wrong if the user did something wrong)
+
+Using data structures, is good measure to include a def checkRep(self) to check the integrity and the correcteness of the data structure
+
+Why assertions?
+- they make the code self-checking
+- they make the code fail early, closer to the bug
+- they help us assign blame
+- they allow us to make documentations on assumptions on preconditions, postconditions and invariants (so how things change in the different app states)
+
+-------------------------------
+
+python-O disables assertions
+Is it ok to disable assertions?
+PROS:
+- faster execution
+- code keeps running, and goes further and deeper
+
+CONS:
+- if the assertion has side effects (a badly formed assertion, but a possibility), turning them off has side effects too
+- even in production may be better to fail early
+
+-------------------------------
+
+Julian Seward, Valgring:
+"better to spend 5% running time doing assertion checks"
+it's ok to lose 5% on efficiency if in return we can make sure everything is ok
+
+On the other hand, example, landing spaceship on mars, a failing assertion might lead to a syste reset, so given only one chance is better to disable assertion and keep running
+
+-------------------------------
+
+if we have an API that represents a trust boundary (between us and the user interfacing with the API who we don't trust), we must test a full range of possible values
+
+testing software on the API: call the api and test the result
+What if the software itself make use of API from other software? 
+(like a browser uses network) -> We can hope the browser doesn't fail, but we need to test it anyway
+There is actually no easy solution to this problem
+ADVICE: always try to use low-lever languages that are predictable and return friendlier code (Python over UNIX, because clearer and friendler and better error handling)
+Use faults injection
+
+-------------------------------
+
+While testing, we need to also consider time, not only the variables might use
+
+-------------------------------
+
+Therac 25: radiations to kill cancerous tissue without harming the patients
+Inevitably 6 persons died because of software bugs, where inputs from the keyboards provided too quickly would trigger a huge amount of radiations, while a slow input wouldn't
+Time's important.
+
+S.U.T. = Software Under Test
+
+-------------------------------
+
+When is time important in SUT?
+You want to look for timeouts, time/sleeps, values depending on the time on which they are happening
+
+-------------------------------
+
+Non-functional inputs: inputs that affects the SUT that have nothing to do with the API provided or used by the SUT
+Example: content switches: switches between threads of execution in a multi-thread SUT (not a problem if the software is single threaded) - threads management is under the control of the OS, not the software
+
+-------------------------------
+
+Kinds of testing:
+- White Box Testing: tester is using detailed knowledge of the system to construct the testing
+- Black Box Testing: testing the system based on how it's supposed to respond to our test cases
+- Unit Testing: looking at some small software model and test on it specifically - goal is to find defects in the internal logic of the SUT. Generally we don't have hypothesis about the pattern of usage, we are going to test with inputs from all the parts of its domain (domain = all possible inputs for the piece of software)
+- Integration Testing: taking multiple software models already Unit Tested, and testing them altogether. What we are really testing is the interface between models.
+- System/Validation Testing: it answers the question of if the system as a whole meets its goals?
+- Differential Testing: we take the same test input and give them to different versions of the same software
+- Stress Testing: system tested out of the normal usage limit - to test robustness and reliability
+- Random Testing: create random inputs to feed to the software. Useful to find corner cases
+
+-------------------------------
+
+Being great at testing:
+- DEV: I want this code to succeed
+  TESTER: I want this code to fail
+  A good tester is both.
+- learn to test creatively
+- don't ignore weird stuff
