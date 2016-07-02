@@ -16,12 +16,22 @@ Courses | Repo
 [How to Code: Systematic Program Design - Part 1](https://www.edx.org/course/how-code-systematic-program-design-part-ubcx-spd1x)| [Link](https://github.com/NicolaFerracin/oss/tree/master/How%20to%20Code%20Systematic%20Program%20Design%20-%20Part%201)
 [Software Processes and Agile Practices](https://www.coursera.org/learn/software-processes-and-agile-practices)| No repo
 
+### Started Courses
+
+Courses| Repo
+:-- | :--:
+[Effective Thinking Through Mathematics](https://www.edx.org/course/effective-thinking-through-mathematics-utaustinx-ut-9-01x-0)|No repo
+[How to Code: Systematic Program Design - Part 2](https://www.edx.org/course/how-code-systematic-program-design-part-ubcx-spd2x)|[Link](https://github.com/NicolaFerracin/oss/tree/master/How%20to%20Code%20Systematic%20Program%20Design%20-%20Part%202)
+[Software Testing](https://www.udacity.com/course/software-testing--cs258)|[Link](https://github.com/NicolaFerracin/oss/tree/master/Software%20Testing)
+[The internet of things](https://www.futurelearn.com/courses/internet-of-things)|No repo
+
 ### Additional Available Courses
 
 Courses|
 :-- | :--:
 [Product Design](https://www.udacity.com/course/viewer#!/c-ud509/l-4290398958/m-4301098544)|
 [Learn to make websites with Google's Material Design Lite](https://www.udemy.com/learn-googles-material-design-lite/)|
+[Introduction to Game Design](https://www.edx.org/course/introduction-game-design-mitx-11-126x-0)|
 
 
 
