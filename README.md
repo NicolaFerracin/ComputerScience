@@ -4,6 +4,24 @@ Repository containing all the projects completed following the courses suggested
 
 [OSS repo](https://github.com/open-source-society/computer-science)
 
-[OSS app](https://ossu.firebaseapp.com/#/)
-
 [Curriculum completion](https://ossu.firebaseapp.com/#/profile/github:7750769)
+
+### Completed Courses
+
+Courses | Repo
+:-- | :--:
+[Introduction to Computer Science - CS50](https://www.edx.org/course/introduction-computer-science-harvardx-cs50x#!)| [Link](https://github.com/NicolaFerracin/oss/tree/master/Introduction%20to%20Computer%20Science)
+[Introduction to Computer Science and Programming Using Python](https://www.edx.org/course/introduction-computer-science-mitx-6-00-1x-8#!)| [Link](https://github.com/NicolaFerracin/oss/tree/master/Introduction%20to%20Computer%20Science%20and%20Programming%20Using%20Python)
+[Introduction to Computer Science and Programming Using Python](https://www.edx.org/course/introduction-computer-science-mitx-6-00-1x-8#!)| [Link](https://github.com/NicolaFerracin/oss/tree/master/Introduction%20to%20Computer%20Science%20and%20Programming%20Using%20Python)
+[How to Code: Systematic Program Design - Part 1](https://www.edx.org/course/how-code-systematic-program-design-part-ubcx-spd1x)| [Link](https://github.com/NicolaFerracin/oss/tree/master/How%20to%20Code%20Systematic%20Program%20Design%20-%20Part%201)
+[Software Processes and Agile Practices](https://www.coursera.org/learn/software-processes-and-agile-practices)| No repo
+
+### Additional Available Courses
+
+Courses|
+:-- | :--:
+[Product Design](https://www.udacity.com/course/viewer#!/c-ud509/l-4290398958/m-4301098544)|
+[Learn to make websites with Google's Material Design Lite](https://www.udemy.com/learn-googles-material-design-lite/)|
+
+
+
