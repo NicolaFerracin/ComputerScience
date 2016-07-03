@@ -1,0 +1,52 @@
+SOFTWARE TESTING
+Week 2
+
+-------------------------------
+
+Partitioning the input
+The domain of all the possible inputs is too big to be tested -> partition the domain into classes
+
+But it's not a good solution because of the lack of clear uidance on how to partition.
+------> Test Coverage: automatic way to partition the domain
+- run a bunch of test cases, toward testing all the functions
+- at the end, the test cases will return a score, of the amount of functions tested out of all the functions
+Good test coverage covers almost all the functions (100 out of 100)
+
+DEF: a measure of the proportion of a program excercised during testing
+PROS:
+- gives us an objective score
+- when coverage is < 100%, we have a meaningful task
+CONS:
+- not help in filling errors of omission
+- difficult to interpret score < 100%
+- 100% coverage doesn't mean all bugs are found
+
+-------------------------------
+
+Coverage Example: Splay Tree
+binary search tree - with insert, delete, lookup
+INVARIANT: the left child of any node, always has a key that's ordered before the key of the parent node, and the right child ordered after
+(as in node '10', the left child is < 10 and the right child is > 10)
+Self balancing tree
+Side effect of a lookup: frequently accessed elements are pushed up in the tree
+
+-------------------------------
+
+COVERAGE METRICS
+How many are there? A LOT
+How many do you need to care about? only a few
+Statement coverage: statement by statement, how many of the statements are you covering with your tests?
+Line coverage: almost the same to statement coverage, the difference is that in one line there might be more than one statement
+Branch coverage: a branch of the code is covered if it executes both ways (in an if/else, it means writing tests for both the IF and the ELSE)
+Loop coverage: execute each loop zero times, once, and more than once
+MC/DC coverage - modified condition/decision: branch coverage + condition takes all possible values + every condition indipendently affects the outcome of a decision. Specialized in the avionic software development
+Path coverage: different because it cares HOW you reach a certain piece of code. Example: if the code includes a FOR loop, if you pass through the the LOOP only once, you create a certain path. If you instead pass through the LOOP twice, you created a new path. And so on. Because every increase in the LOOP corresponds to a new PATH, there is an infinite number of paths, but it gives you a good idea on what to test.
+Boundary value coverage: when a program dpendes on a specific value range, when the program depends on this range, we should test the boundaries. EXAMPLE: a program to determine if a person is allowed to drink alchohol (21). So you need to test 20-21, and possibly 19-22.
+
+-------------------------------
+
+What does code that doesn't get covered mean?
+1. infeasible code
+2. code not worth covering (very simple code that it's hard to trigger)
+3. inadequate test suite
+
