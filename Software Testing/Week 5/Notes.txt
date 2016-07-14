@@ -1,0 +1,49 @@
+SOFTWARE TESTING
+Week 5
+
+-------------------------------
+
+When the random testing returns too many different bugs:
+- pick one and report it -> there will always be at least a bug, so it's a never-ending cycle
+or
+- bug triage:
+	- look at the text of the assertion violation messages
+		Check if one single defect (bug) causes different symptoms -> one bug report
+		or if several defects causes a single symptom
+		or if several defects cause several symptoms (all separete bugs) -> parallel reports
+	- core dump or stacktrace
+	- search over the revision history (to check if the bug is new or old)
+	- examine bug-triggering test cases -> apply test case reduction (reduce a large test-case input to a small input)
+	
+-------------------------------
+
+Test Case Reduction:
+option 1: manual reduction
+option 2: delta debugging - takes the script and the input and automatically terminates when the inputs triggers a bug, reducin the inut
+
+-------------------------------
+
+Hard testing problems:
+- lack of specifications
+- no comparable implementations
+- big SUT
+- large, highly structured input space
+- non-determinism
+- lots of hidden state
+- lack of strong oracles
+
+Examples:
+- large molecular simulations
+- autopilot 
+- JVM running on 32 cores for a month using 40GB of heap
+
+What do to?
+- leverage weak oracles
+- use small hand-checked test inputs
+- rely on code inspections, formal methods and non testing methods
+
+-------------------------------
+
+
+
+-------------------------------

@@ -1,0 +1,62 @@
+SOFTWARE TESTING
+Week 3
+
+-------------------------------
+
+Random Testing: the test cases are created using a Random Number Generator
+PRNG: Pseudo Random Number Generator (using the same seed you can re-create the same set of random number)
+
+The process:
+PRNG -> random test case generator -> SUT (Softwared under test) -> Oracle
+
+The oracle determines if the output of the SUT is ok
+ok? -> go back to step 2 (random test case generator)
+not ok? -> save test case (to be able to check them later) and go back to step 2
+
+The idea is to put all the steps in the process inside a driver script that runs indipendently
+
+-------------------------------
+
+Random Testing vs Fuzzing
+Original meaning of Fuzzing: testing for software robustness
+In the early 2000s Fuzzing got a new connotation: used for penetration testing
+
+-------------------------------
+
+Generative random testing -> inputs are created from scratch
+Mutation-based random testing -> inputs are created by modifying non-randomly generated test cases
+How do you generate mutations?
+- flipping bits
+- modifying selected fields
+- add/remove/replace tokens, subtrees of the AST (abstract syntax tree)
+
+-------------------------------
+
+ORACLES:
+if the oracle isn't automated, you don't have an oracle
+
+Weak oracles:
+- the app crashes
+- violation of a language rule
+- rule violation of an enhanced execution environment
+
+Medium oracle:
+- assertions checks (put by the developers)
+
+Strong oracles:
+- alternate implementation of the same specification
+	- differential testing of compilers
+	- use old version of the SUT
+	- reference implentation
+- function inverse pair 
+	- save/load files
+	- encryption/decryption
+	- assembler/disassembler 
+	- compression/decompression
+- null space transformation: takes a random test case, and we make some sort of a change that shouldn't
+	affect the way it's treated in the SUT
+EXAMPLE:
+def foo(a, b):		->	def foo(a, b):			->	def foo(a, b):
+	return a + b	->		return (a + (b))	->		return a -(-b)
+
+-------------------------------

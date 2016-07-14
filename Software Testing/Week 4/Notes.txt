@@ -1,0 +1,109 @@
+SOFTWARE TESTING
+Week 4
+
+-------------------------------
+
+Why does random testing work?
+- based on weak bug hypotheses (it's easier to make an hypotheses and then check it with random testing)
+- people tend to make same errors both in code and testing - randomg testing might help with it
+- huge asymmetry between speed of computers and people
+
+Why is random testing effective on (some) commercial software? in the sense
+that it founds quite a few bugs
+- because developers are not doing it enough
+- software development efforts not taking proper advantage of random testing are flawed
+
+-------------------------------
+
+Tuning Rules and Probabilities:
+Start early & start simple -> examine test cases, think hard, look at coverage result* -> adjust rules & tweak probabilities -
+																^															  |
+																|															  |
+																 -------------------------------------------------------------
+
+*(make sure to cover the whole code and to produce test cases covering all types of inputs)
+
+-------------------------------
+
+File System testing (fuzzing):
+- make a list of all the APIs we want to test
+- call them randomly with random numbers
+	- special cases: mount & unmount (because if names are produced randomly, then it's higly unlike you end up mounting/unmounting an existing file)
+	- keep track of open files
+	- limit size of files (because you don't want to lose time writing many	 KBs inside a single file, not needed for testing)
+	- limit directory depth (once you reach enough depth, you don't need to go further)
+
+-------------------------------
+
+Fuzzing the bounded queue:
+- start with empty queue
+- 50% enqueue / 50% dequeue
+Is this random walking way of testing enough to cover all results?
+
+- It works fine with Queue(2), because from empty to full it's just a few steps.
+	so there adding/removing to an empty queue and to a full queue is tested many times
+
+- Doesn't work with Queue(1000), because the queue doesn't ever get full.
+	So there's a lot of testing on adding and removing elements from a non-full and non-empty queue
+	but not enough adding/removing to an empty or full queue
+
+How can we use random testing to successfully test Queue(1000)?
+	- We can tweak the probabilities, so enqueue=60% and dequeue=40%
+		This covers a lot of add/remove on full queue, but not on empty queue -> NOT OK
+	- we can use a bias of 0.2 that on 50/50 random basis affects the add/remove probabilities.
+	EXPLANATION
+	V1 (not working because doesn't test boundaries):
+	for i in range(100000):
+		if (random.random() < 0.5):
+			enqueue
+		else
+			dequeue
+	
+	V2 (not working because tests only upper boundare):
+	for i in range(100000):
+		if (random.random() < 0.6):
+			enqueue
+		else
+			dequeue
+	
+	V3 (WORKING!)
+	for x in range(20):
+		bias = 0.2
+		if x%2 == 1:
+			bias = -0.2
+		for i in range(100000):
+			if (random.random() < (0.5 + bias)):
+				enqueue
+			else
+				dequeue
+	
+-------------------------------
+
+ADVANTAGES of RANDOM TESTING:
+- less tester bias (tests are less influenced by my knowledge of the SUT)
+- once automated, human cost of testing is nearly 0
+- often surprises us
+- every fuzzer finds different bugs (which is also a drawback some times)
+
+-------------------------------
+
+DISADVANTAGES of RANDOM TESTING:
+- input validity can be hard
+- oracles are hard
+- no stopping criteria (it can run indifinitely)
+- may find unimportant bugs (because we test random stuff, bits or inputs, which developers are not interested in fixing)
+- may spend all testing time on boring tests
+- may find the same bugs many times
+- can be hard to debug when test case is large and/or makes no sense
+- every fuzzer finds different bugs
+
+-------------------------------
+
+
+-------------------------------
+
+
+-------------------------------
+
+
+-------------------------------
