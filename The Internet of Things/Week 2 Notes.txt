@@ -1,0 +1,45 @@
+The Internet of Things
+Week 2
+
+-------------------------------
+
+Connectivity:
+how to connect all these things in the IoT
+Need: wireless connectivity solution withouth battery supplies issues.
+
+First solution: Zigbee
+Problem: it work only in a short range. Not useful for reliable and high-scale IoT projects. It loses data and requires babysitting.
+Mistakes:
+1. believe the pitch on the need for low-power high-energy technologies. This is wrong because what we need is a high-power low-energy
+ solution: energy drains the battery, power gives range. -> Transfer big chunks of data in a short time, then sleep for most of the time
+2. regulations/legal problems
+3. cost: focused on chip cheaps, while the big cost ended up to be personnel cost (field engineers for trouble-shooting)
+
+-------------------------------
+
+WiFi is a great candidate to share connectivity. BUT fairly large energy consumption. 
+This has changed when DUTY CYCLING: put the sensor to sleep when nothing is happening -> 10x more efficient then Zigbee
+IEEE is working on a new standard for the low power WiFi version -> 802.11ah
+Configuration:
+. 6000 sensors attached to a single access point communitcating at around 100kbps
+. Sub-GHz ISM bands
+. Default WiFi transmission power of 200mW
+. Range of 1km
+
+-------------------------------
+
+Existing tech: low power wide area network 
+PROS:
+1. coverage
+	. suburban-rural range 20km
+	. urban range 5km
+	. difficult urban range 1-2km
+2. cost
+	. chip is cheap
+	. subscription fees is low
+	. 1$ per chip and 1$ per year per subscription
+3. availability
+	. works NOW!
+	. success with large projects (Moscow Smart City: 20000 sensors connected to a very few access points)
+
+-------------------------------

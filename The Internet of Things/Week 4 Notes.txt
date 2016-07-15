@@ -1,0 +1,35 @@
+The Internet of Things
+Week 4
+
+-------------------------------
+
+ROI in the IoT
+1. Real-Time instrumentation
+2. generates big data insights. Value in cross-correlating data
+Differences in B2B and B2C markets
+
+-------------------------------
+
+B2B:
+- long sales cycles (from first contact to final deal)
+- challenge of breaking silos
+- capitalise on the opportunity of big data
+- "the one bridge": only a relative small amount of customers. If you fail, you fail big (because of the word-of-mouth
+and the rather closed market). Better to focus on one customer
+
+-------------------------------
+
+B2C:
+- cash-flow: marketing mainly, to alert the population of your product
+- customer support
+- customer worries/customer illiteracy in matter of IoT
+
+-------------------------------
+
+Milestones in creating an IoT focused company:
+1. Start
+2. Pass the point of no return
+3. Move from prototype to product
+4. Become a market-driven company (from being a technology-driven company)
+
+-------------------------------

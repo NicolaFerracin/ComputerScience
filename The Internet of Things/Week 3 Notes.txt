@@ -1,0 +1,28 @@
+The Internet of Things
+Week 3
+
+-------------------------------
+
+Big Data Analytics
+ -> give life to data collected through the sensors
+Using alghoritms we can extract the:
+- known knowns: e.g. linear regression
+- known unknowns: e.g. machine learning
+- unknown unknowns: Deep lerning algorithms
+
+Example: Have a store with sensors under each product.
+Known knowns: plot a chart with number of items on the x and time on the y. You can see the rate and how quickly the shelves are being emptied
+Known unknowns: machine learning will establish which product is taken off and at what rate and would then help enabling a better supply chain decision
+Unknown unknowns: would help understanding why some products are selling and why others aren't
+
+-------------------------------
+
+
+
+-------------------------------
+
+
+-------------------------------
+
+
+-------------------------------
