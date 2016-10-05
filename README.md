@@ -2,9 +2,9 @@
 
 Repository containing all the projects completed following the courses suggested by the OpenSourceSociety University.
 
-[OSS repo](https://github.com/open-source-society/computer-science)
+[OSS on GitHub](https://github.com/open-source-society/computer-science)
 
-[Curriculum completion](https://ossu.firebaseapp.com/#/profile/github:7750769)
+[OSS App](https://ossu.firebaseapp.com/#/profile/github:7750769)
 
 ### Completed Courses
 
@@ -23,7 +23,6 @@ Courses | Repo
 Courses| Repo
 :-- | :--:
 [Object Oriented Programming in Java](https://www.coursera.org/learn/object-oriented-java)|[Link](https://github.com/NicolaFerracin/oss/tree/master/Object%20Oriented%20Programming%20in%20Java)
-[Effective Thinking Through Mathematics](https://www.edx.org/course/effective-thinking-through-mathematics-utaustinx-ut-9-01x-0)|No repo
 [How to Code: Systematic Program Design - Part 2](https://www.edx.org/course/how-code-systematic-program-design-part-ubcx-spd2x)|[Link](https://github.com/NicolaFerracin/oss/tree/master/How%20to%20Code%20Systematic%20Program%20Design%20-%20Part%202)
 
 
