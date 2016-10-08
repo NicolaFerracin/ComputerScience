@@ -22,9 +22,7 @@ Courses | Repo
 
 Courses| Repo
 :-- | :--:
-[Object Oriented Programming in Java](https://www.coursera.org/learn/object-oriented-java)|[Link](https://github.com/NicolaFerracin/oss/tree/master/Object%20Oriented%20Programming%20in%20Java)
-[How to Code: Systematic Program Design - Part 2](https://www.edx.org/course/how-code-systematic-program-design-part-ubcx-spd2x)|[Link](https://github.com/NicolaFerracin/oss/tree/master/How%20to%20Code%20Systematic%20Program%20Design%20-%20Part%202)
-
+[Software Debugging](https://www.udacity.com/course/software-debugging--cs259) |[Link](https://github.com/NicolaFerracin/ComputerScience/tree/master/Software%20Debugging)
 
 ### Additional Available Courses
 
