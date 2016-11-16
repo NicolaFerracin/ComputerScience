@@ -3,18 +3,39 @@ Week 2
 
 ---------------------------
 
+Assertions
+if conditions holds -> continue
+if conditions fails -> throws exception
 
 ---------------------------
 
+PRECONDITION: assertion that is called at the beginning of a function
+and that check the properties of the argument
+
+POSTCONDITION: assertion that checks the properties of the result
+of the computation before it's being returned
 
 ---------------------------
 
+Assertions and testing
+generate the tests + check the results
 
 ---------------------------
 
+Assertions in the code are there to stay.
+They are there for:
+- catching errors
+- testing
+- documentation
 
 ---------------------------
 
+Refining Assertions
+Test inputs
+  -> preconditions
+    -> postconditions
+Preconditions are much easier to come up with
+Postconditions are hard to elaborate
 
 ---------------------------
 

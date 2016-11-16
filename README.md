@@ -12,7 +12,7 @@ Courses | Repo
 :-- | :--:
 [Introduction to Computer Science - CS50](https://www.edx.org/course/introduction-computer-science-harvardx-cs50x#!)| [Link](https://github.com/NicolaFerracin/oss/tree/master/Introduction%20to%20Computer%20Science)
 [Introduction to Computer Science and Programming Using Python](https://www.edx.org/course/introduction-computer-science-mitx-6-00-1x-8#!)| [Link](https://github.com/NicolaFerracin/oss/tree/master/Introduction%20to%20Computer%20Science%20and%20Programming%20Using%20Python)
-[Introduction to Computer Science and Programming Using Python](https://www.edx.org/course/introduction-computer-science-mitx-6-00-1x-8#!)| [Link](https://github.com/NicolaFerracin/oss/tree/master/Introduction%20to%20Computer%20Science%20and%20Programming%20Using%20Python)
+[From Nand to Tetris](https://www.coursera.org/learn/build-a-computer)| [Link](https://github.com/NicolaFerracin/ComputerScience/tree/master/From%20Nand%20to%20Tetris)
 [How to Code: Systematic Program Design - Part 1](https://www.edx.org/course/how-code-systematic-program-design-part-ubcx-spd1x)| [Link](https://github.com/NicolaFerracin/oss/tree/master/How%20to%20Code%20Systematic%20Program%20Design%20-%20Part%201)
 [Software Processes and Agile Practices](https://www.coursera.org/learn/software-processes-and-agile-practices)| No repo
 [Software Testing](https://www.udacity.com/course/software-testing--cs258)|[Link](https://github.com/NicolaFerracin/oss/tree/master/Software%20Testing)
