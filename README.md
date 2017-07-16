@@ -26,9 +26,9 @@ Courses| Repo
 
 ### Additional Available Courses
 
-Courses|
-:-- | :--:
-[Product Design](https://www.udacity.com/course/viewer#!/c-ud509/l-4290398958/m-4301098544)|
-[Learn to make websites with Google's Material Design Lite](https://www.udemy.com/learn-googles-material-design-lite/)|
-[Introduction to Game Design](https://www.edx.org/course/introduction-game-design-mitx-11-126x-0)|
-[Selenium WebDriver Training with Java Basics](https://www.udemy.com/selenium-training/)|
+| Courses |
+| ------- |
+| [Product Design](https://www.udacity.com/course/viewer#!/c-ud509/l-4290398958/m-4301098544) |
+| [Learn to make websites with Google's Material Design Lite](https://www.udemy.com/learn-googles-material-design-lite/) |
+| [Introduction to Game Design](https://www.edx.org/course/introduction-game-design-mitx-11-126x-0) |
+| [Selenium WebDriver Training with Java Basics](https://www.udemy.com/selenium-training/) |
