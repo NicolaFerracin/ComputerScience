@@ -1,4 +1,4 @@
-#Open Source Society University - Curriculum
+# Open Source Society University - Curriculum
 
 Repository containing all the projects completed following the courses suggested by the OpenSourceSociety University.
 
@@ -6,7 +6,7 @@ Repository containing all the projects completed following the courses suggested
 
 [OSS App](https://ossu.firebaseapp.com/#/profile/github:7750769)
 
-### Completed Courses
+## Completed Courses
 
 Courses | Repo
 :-- | :--:
@@ -18,13 +18,13 @@ Courses | Repo
 [Software Testing](https://www.udacity.com/course/software-testing--cs258)|[Link](https://github.com/NicolaFerracin/oss/tree/master/Software%20Testing)
 [The internet of things](https://www.futurelearn.com/courses/internet-of-things)|[Link](https://github.com/NicolaFerracin/oss/tree/master/The%20Internet%20of%20Things)
 
-### Started Courses
+## Started Courses
 
 Courses| Repo
 :-- | :--:
 [Software Debugging](https://www.udacity.com/course/software-debugging--cs259) |[Link](https://github.com/NicolaFerracin/ComputerScience/tree/master/Software%20Debugging)
 
-### Additional Available Courses
+## Additional Available Courses
 
 | Courses |
 | ------- |
