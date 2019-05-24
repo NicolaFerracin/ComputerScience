@@ -12,7 +12,7 @@
 //-----------------------------------------------------------------------------
 
 const assert = require('chai').assert;
-const BTS = require('./index');
+const BST = require('./index');
 
 //-----------------------------------------------------------------------------
 // Helpers
@@ -34,11 +34,11 @@ function assertTreeValues(tree, values) {
 // Tests
 //-----------------------------------------------------------------------------
 
-describe('BTS', () => {
+describe('BST', () => {
   let tree;
 
   beforeEach(() => {
-    tree = new BTS();
+    tree = new BST();
   });
 
   describe('add()', () => {

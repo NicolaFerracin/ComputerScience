@@ -6,7 +6,7 @@ class Node {
   }
 }
 
-class BTS {
+class BST {
   constructor() {
     this.root = null;
   }
@@ -181,4 +181,4 @@ class BTS {
   }
 }
 
-module.exports = BTS;
+module.exports = BST;
