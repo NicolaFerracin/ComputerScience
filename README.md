@@ -8,7 +8,7 @@ Repository containing all the projects completed following the courses suggested
 
 Courses/Material | Repo
 :-- | :--:
-[Introduction to Computer Science - CS50](https://www.edx.org/course/introduction-computer-science-harvardx-cs50x#!)| [Link](https://github.com/NicolaFerracin/oss/tree/master/Introduction%20to%20Computer%20Science)
+[Introduction to Computer Science - CS50](https://www.edx.org/course/introduction-computer-science-harvardx-cs50x#!)| [Link](https://github.com/NicolaFerracin/oss/tree/master/CS50)
 [Introduction to Computer Science and Programming Using Python](https://www.edx.org/course/introduction-computer-science-mitx-6-00-1x-8#!)| [Link](https://github.com/NicolaFerracin/oss/tree/master/Introduction%20to%20Computer%20Science%20and%20Programming%20Using%20Python)
 [From Nand to Tetris - Part1](https://www.coursera.org/learn/build-a-computer)| [Link](https://github.com/NicolaFerracin/ComputerScience/tree/master/From%20Nand%20to%20Tetris/part1)
 [From Nand to Tetris - Part2](https://www.coursera.org/learn/nand2tetris2)| [Link](https://github.com/NicolaFerracin/ComputerScience/tree/master/From%20Nand%20to%20Tetris/part2)
