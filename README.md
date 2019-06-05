@@ -19,3 +19,4 @@ Courses/Material | Repo
 Data Structures|[Link](https://github.com/NicolaFerracin/ComputerScience/tree/master/Data%20Structures)
 Grokking Algorithms|[Link](https://github.com/NicolaFerracin/oss/tree/master/Grokking%20Algorithms)
 Cracking the coding interview|[Link](https://github.com/NicolaFerracin/oss/tree/master/Cracking%20the%20coding%20interview)
+[Introduction to Aerospace Engineering: Astronautics and Human Spaceflight - 16.00x](https://courses.edx.org/courses/course-v1:MITx+16.00x+2T2019)|[Link](https://github.com/NicolaFerracin/oss/tree/master/16.00x)
