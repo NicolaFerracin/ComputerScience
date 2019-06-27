@@ -1,0 +1,139 @@
+class Game {
+  field Snake snake;
+  field int direction, lastDirection;
+
+  constructor Game new() {
+    let snake = Snake.new();
+    let direction = 0;
+    let lastDirection = 0; // used to prevent the snake to go back and eat itself
+    return this;
+  }
+
+  /*
+    Game logic
+  */
+  method void run() {
+    var char key;
+    var boolean shouldExit;
+    let shouldExit = false;
+
+    do setupUi();
+
+    while (~shouldExit) {
+      while (key = 0) {
+        let key = Keyboard.keyPressed();
+      }
+
+      if (key = 81) {
+        let shouldExit = true; // q key
+      }
+
+      // left arrow
+      if (key = 130) {
+        if (~(lastDirection = 3)) {
+          let direction = 1;
+          let lastDirection = 1;
+        } else {
+          let direction = 0;
+        }
+      }
+
+      // up arrow
+      if (key = 131) {
+        if (~(lastDirection = 4)) {
+          let direction = 2;
+          let lastDirection = 2;
+        } else {
+          let direction = 0;
+        }
+      }
+
+      // right arrow
+      if (key = 132) {
+        if (~(lastDirection = 1)) {
+          let direction = 3;
+          let lastDirection = 3;
+        } else {
+          let direction = 0;
+        }
+      }
+
+      // down arrow
+      if (key = 133) {
+        if (~(lastDirection = 2)) {
+          let direction = 4;
+          let lastDirection = 4;
+        } else {
+          let direction = 0;
+        }
+      }
+
+      while (~(key = 0)) {
+        let key = Keyboard.keyPressed();
+
+        // check for game over
+        if (snake.isGameOver()) {
+          do printGameFinished("GAME OVER");
+          let shouldExit = true;
+        }
+
+        // check for game won
+        if (snake.isGameWon()) {
+          do printGameFinished("YOU WON!");
+          let shouldExit = true;
+        }
+
+        do move();
+      }
+    }
+
+    return;
+  }
+
+  /*
+    Moves the snake on the screen
+  */
+  method void move() {
+    if (direction = 1) {
+      do snake.moveLeft();
+    }
+    if (direction = 2) {
+      do snake.moveUp();
+    }
+    if (direction = 3) {
+      do snake.moveRight();
+    }
+    if (direction = 4) {
+      do snake.moveDown();
+    }
+    
+    do Sys.wait(5);
+
+    return;
+  }
+
+  /*
+    Prints the given message to the top bar
+  */
+  method void printGameFinished(String msg) {
+    do Output.moveCursor(0, 20);
+    do Output.printString(msg);
+
+    return;
+  }
+
+  /*
+    Setup the initial UI
+  */
+  method void setupUi() {
+    do Screen.drawRectangle(0, 12, 511, 12);
+
+    return;
+  }
+
+  method void dispose() {
+    do snake.dispose();
+    do Memory.deAlloc(this);
+    return;
+  }
+}

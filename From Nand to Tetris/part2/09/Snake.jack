@@ -1,0 +1,322 @@
+class Snake {
+  field Matrix matrix;
+  field int currentLen, maxW, maxH, score, direction;
+  field boolean hasCollision, hasWon;
+  field Food food;
+
+  constructor Snake new() {
+    let maxW = 511;
+    let maxH = 255;
+    let currentLen = 20;
+    let score = 50;
+
+    let matrix = Matrix.new(currentLen, 2);
+
+    do initializeMatrix();
+    let food = Food.new();
+
+    do printScore();
+    do draw(true);
+
+    return this;
+  }
+
+  /*
+    Initialize matrix for snake. Each entry is square in the body
+  */
+  method void initializeMatrix() {
+    var int i, x, y;
+    let i = 0;
+    let x = (512/2) - 100;
+    let y = (256/2) - 3;
+
+    while (i < (currentLen)) {
+      do matrix.set(currentLen - i - 1, 0, x);
+      do matrix.set(currentLen - i - 1, 1, y);
+      let i = i + 1;
+      let x = x + 5;
+    }
+
+    return;
+  }
+
+  /*
+    Draw the snake. This method is also responsible for checking the
+    the food and any collision in the snake's body
+  */
+  method void draw(boolean mode) {
+    var int i, j, x, y;
+    var Array col;
+
+    do checkFood();
+
+    // if the snake ate itself (collision) then set the flag and return
+    let hasCollision = matrix.hasCollision(currentLen);
+    if (hasCollision) {
+      return;
+    }
+
+    let i = 0;
+
+    do Screen.setColor(mode);
+    while (i < currentLen) {
+      let col = matrix.get(i);
+      let x = col[0];
+      let y = col[1];
+
+      do Screen.drawRectangle(x, y, x + 5, y + 5);
+
+      let i = i + 1;
+    }
+    
+    return;
+  }
+
+  /*
+    Attempt to move the snake left. The snake can't go off screen
+  */
+  method void moveLeft() {
+    var int i;
+    var Array next;
+    let i = currentLen - 1;
+
+    let direction = 1;
+
+    let next = matrix.get(0);
+
+    if (next[0] - 5 > 0) {
+      do draw(false);
+
+      while (i > 0) {
+        let next = matrix.get(i - 1);
+        do matrix.set(i, 0, next[0]);
+        do matrix.set(i, 1, next[1]);
+        let i = i - 1;
+      }
+
+      let next = matrix.get(0);
+      do matrix.set(0, 0, next[0] - 5);
+      do matrix.set(0, 1, next[1]);
+
+      do draw(true);
+    }
+
+    return;
+  }
+
+  /*
+    Attempt to move the snake up. The snake can't go off screen
+  */
+  method void moveUp() {
+    var int i;
+    var Array next;
+    let i = currentLen - 1;
+
+    let direction = 2;
+
+    let next = matrix.get(0);
+
+    if (next[1] - 5 > 11) {
+      do draw(false);
+
+      while (i > 0) {
+        let next = matrix.get(i - 1);
+        do matrix.set(i, 0, next[0]);
+        do matrix.set(i, 1, next[1]);
+        let i = i - 1;
+      }
+
+      let next = matrix.get(0);
+      do matrix.set(0, 0, next[0]);
+      do matrix.set(0, 1, next[1] - 5);
+
+      do draw(true);
+    }
+
+    return;
+  }
+
+  /*
+    Attempt to move the snake right. The snake can't go off screen
+  */
+  method void moveRight() {
+    var int i;
+    var Array next;
+    let i = currentLen - 1;
+
+    let direction = 3;
+
+    let next = matrix.get(0);
+
+    if (next[0] + 5 < maxW) {
+      do draw(false);
+
+      while (i > 0) {
+        let next = matrix.get(i - 1);
+        do matrix.set(i, 0, next[0]);
+        do matrix.set(i, 1, next[1]);
+        let i = i - 1;
+      }
+
+      let next = matrix.get(0);
+      do matrix.set(0, 0, next[0] + 5);
+      do matrix.set(0, 1, next[1]);
+
+      do draw(true);
+    }
+
+    return;
+  }
+
+  /*
+    Attempt to move the snake down. The snake can't go off screen
+  */
+  method void moveDown() {
+    var int i;
+    var Array next;
+    let i = currentLen - 1;
+    
+    let direction = 4;
+
+    let next = matrix.get(0);
+
+    if ((next[1] + 5) < maxH) {
+      do draw(false);
+
+      while (i > 0) {
+        let next = matrix.get(i - 1);
+        do matrix.set(i, 0, next[0]);
+        do matrix.set(i, 1, next[1]);
+        let i = i - 1;
+      }
+
+      let next = matrix.get(0);
+      do matrix.set(0, 0, next[0]);
+      do matrix.set(0, 1, next[1] + 5);
+
+      do draw(true);
+    }
+
+    return;
+  }
+
+  /*
+    Check if the snake ate food by comparing the snake's head position to the food position
+  */
+  method void checkFood() {
+    var Array head, foodCoords;
+    var int x, y, x1, y1;
+    let head = matrix.get(0);
+    let foodCoords = food.getCoords();
+
+    let x = head[0] - 1;
+    let x1 = head[0] + 6;
+    let y = head[1] - 1;
+    let y1 = head[1] + 6;
+
+    if ((foodCoords[0] + 2) > x) {
+      if (foodCoords[0] < x1) {
+        if ((foodCoords[1] + 2) > y) {
+          if (foodCoords[1] < y1) {
+            // if the snake ate food, increase score
+            let score = score + 1;
+
+            // if the score is 100, the user won
+            if (score = 100) {
+              let hasWon = true;
+              return;
+            }
+
+            do growBody(); // make snake body larger
+            do printScore(); // update score
+            do food.generateNewFood(); // generate new food
+          }
+        }
+      }
+    }
+
+    return;
+  }
+
+  /*
+    Grows the snake's body after eating
+  */
+  method void growBody() {
+    var Matrix newMatrix;
+    var Array cell;
+    var int i, newHeadX, newHeadY;
+    let i = 1;
+
+    let currentLen = currentLen + 1;
+
+    let newMatrix = Matrix.new(currentLen, 2);
+
+    // copy existing snake to a new matrix adding space for a new head
+    while (i < currentLen) {
+      let cell = matrix.get(i - 1);
+      do newMatrix.set(i, 0, cell[0]);
+      do newMatrix.set(i, 1, cell[1]);
+      let i = i + 1;
+    }
+
+    // get old head
+    let cell = matrix.get(0);
+
+    // determine new head position
+    if (direction = 1) {
+      let newHeadX = cell[0] - 5;
+      let newHeadY = cell[1];
+    }
+    if (direction = 2) {
+      let newHeadX = cell[0];
+      let newHeadY = cell[1] - 5;
+    }
+    if (direction = 3) {
+      let newHeadX = cell[0] + 5;
+      let newHeadY = cell[1];
+    }
+    if (direction = 4) {
+      let newHeadX = cell[0];
+      let newHeadY = cell[1] + 5;
+    }
+
+    // add new cell to the head
+    do newMatrix.set(0, 0, newHeadX);
+    do newMatrix.set(0, 1, newHeadY);
+    
+    let matrix = newMatrix;
+
+    return;
+  }
+
+  /*
+    Sets the game over flag
+  */
+  method boolean isGameOver() {
+    return hasCollision;
+  }
+
+  /*
+    Sets the game won flag
+  */
+  method boolean isGameWon() {
+    return hasWon;
+  }
+
+  /*
+    Prints the score to the screen
+  */
+  method void printScore() {
+    do Output.moveCursor(0, 0);
+    do Output.printString("Score: ");
+    do Output.printInt(score);
+    return;
+  }
+
+  method void dispose() {
+    do matrix.dispose();
+    do food.dispose();
+    do Memory.deAlloc(this);
+    return;
+  }
+}

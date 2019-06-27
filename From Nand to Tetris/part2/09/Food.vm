@@ -1,0 +1,104 @@
+function Food.new 0
+push constant 2
+call Memory.alloc 1
+pop pointer 0
+push pointer 0
+call Food.generateNewFood 1
+pop temp 0
+push pointer 0
+return
+function Food.generateNewFood 0
+push argument 0
+pop pointer 0
+push pointer 0
+call Food.erase 1
+pop temp 0
+push this 0
+push this 1
+add
+push constant 10
+add
+call Random.seed 1
+pop temp 0
+push constant 0
+push constant 512
+call Random.between 2
+pop this 0
+push constant 0
+push constant 256
+call Random.between 2
+pop this 1
+push pointer 0
+call Food.draw 1
+pop temp 0
+push constant 0
+return
+function Food.draw 0
+push argument 0
+pop pointer 0
+push constant 0
+not
+call Screen.setColor 1
+pop temp 0
+push this 0
+push this 1
+push this 0
+push constant 2
+add
+push this 1
+push constant 2
+add
+call Screen.drawRectangle 4
+pop temp 0
+push constant 0
+return
+function Food.erase 0
+push argument 0
+pop pointer 0
+push constant 0
+call Screen.setColor 1
+pop temp 0
+push this 0
+push this 1
+push this 0
+push constant 2
+add
+push this 1
+push constant 2
+add
+call Screen.drawRectangle 4
+pop temp 0
+push constant 0
+return
+function Food.getCoords 1
+push argument 0
+pop pointer 0
+push constant 2
+call Array.new 1
+pop local 0
+push constant 0
+push local 0
+add
+push this 0
+pop temp 0
+pop pointer 1
+push temp 0
+pop that 0
+push constant 1
+push local 0
+add
+push this 1
+pop temp 0
+pop pointer 1
+push temp 0
+pop that 0
+push local 0
+return
+function Food.dispose 0
+push argument 0
+pop pointer 0
+push pointer 0
+call Memory.deAlloc 1
+pop temp 0
+push constant 0
+return
