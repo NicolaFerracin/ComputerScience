@@ -206,6 +206,7 @@ function love.update(dt)
                 gameState = 'serve'
                 -- places the ball in the middle of the screen, no velocity
                 ball:reset()
+                player1:reset()
             end
         end
 
@@ -225,20 +226,9 @@ function love.update(dt)
                 gameState = 'serve'
                 -- places the ball in the middle of the screen, no velocity
                 ball:reset()
+                player1:reset()
             end
         end
-    end
-
-    --
-    -- paddles can move no matter what state we're in
-    --
-    -- player 1
-    if love.keyboard.isDown('w') then
-        player1.dy = -PADDLE_SPEED
-    elseif love.keyboard.isDown('s') then
-        player1.dy = PADDLE_SPEED
-    else
-        player1.dy = 0
     end
 
     -- player 2
@@ -322,7 +312,13 @@ function love.draw()
             0, 10, VIRTUAL_WIDTH, 'center')
         love.graphics.printf('Press Enter to serve!', 0, 20, VIRTUAL_WIDTH, 'center')
     elseif gameState == 'play' then
-        -- no UI messages to display in play
+        if ball.y > player1.y then
+          player1.dy = PADDLE_SPEED
+        elseif ball.y < player1.y then
+          player1.dy = -PADDLE_SPEED
+        else
+          player1.dy = 0
+        end
     elseif gameState == 'done' then
         -- UI messages
         love.graphics.setFont(largeFont)

@@ -50,6 +50,12 @@ function Paddle:update(dt)
     end
 end
 
+function Paddle:reset()
+    self.x = 10
+    self.y = 30
+    self.dy = 0
+end
+
 --[[
     To be called by our main function in `love.draw`, ideally. Uses
     LÖVE2D's `rectangle` function, which takes in a draw mode as the first
