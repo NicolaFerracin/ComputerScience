@@ -8,6 +8,7 @@ Repository containing all the projects completed following the courses suggested
 
 Courses/Material | Repo
 :-- | :--:
+Introduction to Game Development CS50G|[Link](https://github.com/NicolaFerracin/ComputerScience/tree/master/CS50G)
 Precalculus|[Link](https://github.com/NicolaFerracin/ComputerScience/tree/master/Precalculus)
 Data Structures|[Link](https://github.com/NicolaFerracin/ComputerScience/tree/master/Data%20Structures)
 Grokking Algorithms|[Link](https://github.com/NicolaFerracin/oss/tree/master/Grokking%20Algorithms)
