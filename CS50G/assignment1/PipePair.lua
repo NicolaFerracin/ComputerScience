@@ -11,7 +11,8 @@
 PipePair = Class{}
 
 -- size of the gap between pipes
-local GAP_HEIGHT = 90
+local MIN_GAP_HEIGHT = 80
+local MAX_GAP_HEIGHT = 110
 
 function PipePair:init(y)
     -- flag to hold whether this pair has been scored (jumped through)
@@ -26,7 +27,8 @@ function PipePair:init(y)
     -- instantiate two pipes that belong to this pair
     self.pipes = {
         ['upper'] = Pipe('top', self.y),
-        ['lower'] = Pipe('bottom', self.y + PIPE_HEIGHT + GAP_HEIGHT)
+        -- Assignment1: randomize gap
+        ['lower'] = Pipe('bottom', self.y + PIPE_HEIGHT + math.random(MIN_GAP_HEIGHT, MAX_GAP_HEIGHT))
     }
 
     -- whether this pipe pair is ready to be removed from the scene
