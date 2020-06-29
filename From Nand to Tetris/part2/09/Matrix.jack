@@ -1,0 +1,97 @@
+/*
+  Matrix class to hold a 2d array for the snake body.
+  Each element in the array represents a small square.
+  Each element holds a subarray, with 2 elements: the x and y coordinates.
+*/
+class Matrix {
+  field Array matrix;
+  field int width, height;
+
+  /*
+    Initialize the matrix with given width and height.
+    All values are initialized to 0.
+  */
+  constructor Matrix new(int w, int h) {
+    var int i, j;
+    var Array col;
+
+    let width = w;
+    let height = h;
+
+    let matrix = Array.new(width);
+
+    let i = 0;
+
+    while (i < width) {
+      let j = 0;
+      let matrix[i] = Array.new(height);
+      let col = matrix[i];
+
+      while (j < height) {
+        let col[j] = 0;
+        let j = j + 1;
+      }
+
+      let i = i + 1;
+    }
+
+    return this;
+  }
+
+  /*
+    Set value for element at j in subarray at i
+  */
+  method void set(int i, int j, int val) {
+    var Array col;
+    let col = matrix[i];
+    let col[j] = val;
+
+    return;
+  }
+
+  /*
+    Retrieve subarray at given index
+  */
+  method Array get(int i) {
+    var Array col;
+    let col = matrix[i];
+
+    return col;
+  }
+
+  /*
+    Check if any of the subarray are equals (meaning two or more elements are overlapping)
+  */
+  method boolean hasCollision(int limit) {
+    var int i, j;
+    var Array a, b;
+
+    let i = 0;
+    while (i < limit) {
+      let a = matrix[i];
+      
+      let j = 0;
+      while (j < limit) {
+        let b = matrix[j];
+        if (~(i = j)) {
+          if (a[0] = b[0]) {
+            if (a[1] = b[1]) {
+              return true;
+            }
+          }
+        }
+
+        let j = j + 1;
+      }
+
+      let i = i + 1;
+    }
+    return false;
+  }
+
+  method void dispose() {
+    do matrix.dispose();
+    do Memory.deAlloc(this);
+    return;
+  }
+}

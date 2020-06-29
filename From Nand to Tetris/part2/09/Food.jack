@@ -1,0 +1,69 @@
+/*
+  Food class
+*/
+class Food {
+  field int x, y;
+  
+  /*
+    Create class by generating a new food
+  */
+  constructor Food new() {
+    do generateNewFood();
+
+    return this;
+  }
+
+  /*
+    Create new food
+  */
+  method void generateNewFood() {
+    // first erase previous food
+    do erase();
+    
+    // generate random x and y coordinates
+    do Random.seed(x + y + 10);
+    let x = Random.between(0, 512);
+    let y = Random.between(0, 256);
+
+    // draw the new food to screen
+    do draw();
+
+    return;
+  }
+
+  /*
+    Draw food at current x and y coordinates
+  */
+  method void draw() {
+    do Screen.setColor(true);
+    do Screen.drawRectangle(x, y, x + 2, y + 2);
+
+    return;
+  }
+
+  /*
+    Erase food at current x and y coordinates
+  */
+  method void erase() {
+    do Screen.setColor(false);
+    do Screen.drawRectangle(x, y, x + 2, y + 2);
+
+    return;
+  }
+
+  /*
+    Getter for the current coordinates
+  */
+  method Array getCoords() {
+    var Array coords;
+    let coords = Array.new(2);
+    let coords[0] = x;
+    let coords[1] = y;
+    return coords;
+  }
+
+  method void dispose() {
+    do Memory.deAlloc(this);
+    return;
+  }
+}
